@@ -1,0 +1,15 @@
+[package]
+name = "lovely-unix"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "lovely"
+crate-type = ["cdylib"]
+
+[dependencies]
+lovely-core = { version ="0.6.0", path = "../lovely-core" }
+
+once_cell = "1.19.0"
+ctor = "0.2.7"
+
