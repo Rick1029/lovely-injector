@@ -29,6 +29,37 @@ cd into the root lovely-injector directory, and run cargo build --release.
 The resulting liblovely.so file will be in $directory/target/release
 Copy that to the lib folder in your extracted Love2D folder
 
+## Modifying AppRun
+If you want to use a streamlined approach to load lovely-injector automatically:
+
+1. Open the `AppRun` file inside the `squashfs-root` directory for editing:
+   ```bash
+   nano squashfs-root/AppRun
+   ```
+2. Add the following lines just after the following block:
+   ```bash
+   #!/bin/sh
+
+   if [ -z "$APPDIR" ]; then
+       APPDIR="$(dirname "$(readlink -f "$0")")"
+   fi
+   ```
+   Add:
+   ```bash
+   export LD_PRELOAD="$APPDIR/lib/liblovely.so"
+   ```
+3. Save and close the file.
+
+## Repackaging the AppImage
+1. After modifying `AppRun`, repackage the AppImage:
+   ```bash
+   appimagetool squashfs-root ModifiedBalatro.AppImage
+   ```
+2. Use the repackaged AppImage to run the game:
+   ```bash
+   ./ModifiedBalatro.AppImage
+   ```
+
 ## Running the game!
 Place liblovely.so into the lib folder of your modded Balatro directory.
 Use the following terminal command to startup Balatro with lovely-injector. Make sure the paths are correct.
