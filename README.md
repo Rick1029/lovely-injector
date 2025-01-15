@@ -29,7 +29,7 @@ cd into the root lovely-injector directory, and run cargo build --release.
 The resulting liblovely.so file will be in $directory/target/release
 Copy that to the lib folder in your extracted Love2D folder
 
-## Modifying AppRun
+## Modifying AppRun (Thank you to stayupthetree!)
 If you want to use a streamlined approach to load lovely-injector automatically:
 
 1. Open the `AppRun` file inside the `squashfs-root` directory for editing:
